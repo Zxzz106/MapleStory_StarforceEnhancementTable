@@ -1,2 +1,6 @@
 # MapleStory_StarforceEnhancementTable
-Calculates the possibilities of achieving 22*, with a given number of mesos
+
+A：无活动
+B：七折
+C：必成
+D：超级必成
