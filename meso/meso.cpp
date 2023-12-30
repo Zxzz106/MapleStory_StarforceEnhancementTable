@@ -71,7 +71,7 @@ int main() {
 	double p=0,step=x/40;
 	do {
 		ans=dfs((int)p,from,0);
-		cout<<setprecision(1)<<p*ratio/1e9<<"b\t";
+		// cout<<setprecision(1)<<p*ratio/1e9<<"b\t";
 		cout<<setprecision(3)<<ans<<endl;
 		p+=step;
 	}while(p<=x);

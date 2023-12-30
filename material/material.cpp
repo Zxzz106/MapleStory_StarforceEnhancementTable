@@ -32,10 +32,11 @@ public:
 	void print(){
 		cout<<"An "<<n<<"x"<<m<<" matrix:"<<endl;
 		for(auto i:mat) {
-			cout<<"|";
+			// cout<<"|";
 			for(auto j:i)
 				cout<<j<<"\t";
-			cout<<"|"<<endl;
+			// cout<<"|"<<endl;
+			cout<<endl;
 		}
 	}
 	vector<double>& operator [](int x){
@@ -105,8 +106,6 @@ void init(Matrix& A,Matrix& b,int x) {
 	b[10][0]=1;
 	b[21][0]=1;
 	b[32][0]=1;
-
-	// b.print();
 }
 void Solve(Matrix A ,Matrix b,Matrix X,int x) {
 	init(A,b,x);
@@ -114,6 +113,7 @@ void Solve(Matrix A ,Matrix b,Matrix X,int x) {
 	Gauss(A,b);
 	solvex(A,b,X);
 	for(int i=0;i<11;i++)P[x][i]=X[i][0];
+	for(int i=0;i<33;i++) cout<<X[i][0]<<endl;
 }
 void print(int x) {
 	for(int j=15;j<=x;j++) cout<<"\t"<<j<<"*->"<<x<<"*";cout<<endl;
@@ -130,11 +130,6 @@ void Print() {
 	for(int i=22;i>=15;i--) print(i);
 }
 int main() {
-	cout<<fixed<<setprecision(3);
-	// cin>>from>>to;
-	// for(int i=12;i<=21;i++) {
-	// 	cout<<i<<"\t"<<succ[i]<<"\t"<<keep[i]<<"\t"<<drop[i]<<"\t"<<dsty[i]<<endl;
-	// }
 	from=21;to=22;
 	bool successon15=0,safeguard=0;
 	if(successon15) cout<<"必成 "; else cout<<"无必成 ";
