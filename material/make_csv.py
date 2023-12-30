@@ -12,7 +12,7 @@ res.sort()
 DF=pd.DataFrame()
 for file in res: 
 	df=pd.read_csv(dir_path+file,header=None)
-	df.columns=[file[3:13]]
+	df.columns=[file[3:6]]
 	DF=pd.concat([DF,df],axis=1)
 
-DF.to_csv('meso.csv')
+DF.to_csv('material.csv')

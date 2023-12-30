@@ -1,8 +1,9 @@
 #!/bin/bash
 
-From=12
-To=17
-num=06
+From=$1
+To=$2
+num=$3
+
 levels="140 150 160 200"
 
 g++ meso.cpp -o meso.exe

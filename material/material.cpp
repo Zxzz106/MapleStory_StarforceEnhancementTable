@@ -116,26 +116,30 @@ void Solve(Matrix A ,Matrix b,Matrix X,int x) {
 	// for(int i=0;i<3*dif;i++) cout<<X[i][0]<<endl;
 }
 void print(int x) {
-	for(int j=15;j<=x;j++) cout<<"\t"<<j<<"*->"<<x<<"*";cout<<endl;
+	// for(int j=15;j<=x;j++) cout<<"\t"<<j<<"*->"<<x<<"*";cout<<endl;
 	P[0][x-12]=1;
 	for(int i=0;i<=20;i++) {
-		cout<<i<<"\t";
-		for(int j=3;j<=x-12;j++) cout<<P[i][j]/P[i][x-12]<<"\t";
+		// cout<<i<<"\t";
+		cout<<P[i][3]/P[i][x-12];
 		cout<<endl;
 	}
 }
 void Print() {
-	cout<<fixed<<setprecision(3);
-	cout<<endl;
+	// cout<<fixed<<setprecision(3);
+	// cout<<endl;
 	// for(int i=22;i>=15;i--) print(i);
 	print(to);
 }
 int main() {
-	to=16;dif=to-12+1;
-	bool successon15=0,safeguard=0;
-	if(successon15) cout<<"必成 "; else cout<<"无必成 ";
-	if(safeguard) cout<<"保护 "; else cout<<"无保护 ";
-	cout<<endl;
+	
+	int type;
+	cin>>to>>type;
+	dif=to-12+1;
+	bool successon15=(type==1),safeguard=(type==2);
+	// if(successon15) cout<<"必成 "; else cout<<"无必成 ";
+	// if(safeguard) cout<<"保护 "; else cout<<"无保护 ";
+	// cout<<to<<type<<endl;
+	// cout<<endl;
 	if(successon15) {
 		succ[15]=1;keep[15]=0;drop[15]=0;dsty[15]=0;
 	}

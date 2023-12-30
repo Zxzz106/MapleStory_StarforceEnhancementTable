@@ -66,13 +66,13 @@ int main() {
 	// cout<<fixed<<setprecision(1)<<x<<"b"<<"\t ";
 	x=x*1000000000/ratio;
 	assert(x<=6000000);
-	cout<<fixed<<setprecision(3);
+	// cout<<fixed<<setprecision(3);
 	double ans;
 	double p=0,step=x/40;
 	do {
 		ans=dfs((int)p,from,0);
 		// cout<<setprecision(1)<<p*ratio/1e9<<"b\t";
-		cout<<setprecision(3)<<ans<<endl;
+		cout<<ans<<endl;
 		p+=step;
 	}while(p<=x);
 	return 0;
