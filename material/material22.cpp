@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-int dif,to;
+int from,to;
 double succ[30]={0.95,0.90,0.85,0.85,0.80,0.75,0.70,0.65,0.60,0.55,0.50,0.45,0.40,0.35,0.30,0.30,0.30,0.30,0.30,0.30,0.30,0.30,0.03,0.02,0.01},
        keep[30]={0.05,0.10,0.15,0.15,0.20,0.25,0.30,0.35,0.40,0.45,0.50,0.55,0.60,0.65,0.70,0.679,0.0,0.00,0.00,0.00,0.63},
 	   drop[30]={0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.000,0.679,0.679,0.672,0.672,0.0,0.63,0.776,0.686,0.594},
@@ -78,42 +78,42 @@ void solvex(Matrix& A ,Matrix& b,Matrix& x) {
 }
 void init(Matrix& A,Matrix& b,int x) {
 	// A.clear();b.clear();
-	for(int i=0;i<=dif-2;i++) {
+	for(int i=0;i<=9;i++) {
 		A[i][i]=keep[i+12]-1;
-		if(i!=0)A[i][i-1+dif]=drop[i+12];
+		if(i!=0)A[i][i-1+11]=drop[i+12];
 		A[i][i+1]=succ[i+12];
 	}
-	A[dif-1][dif-1]=1;
+	A[10][10]=1;
 
-	for(int i=dif;i<=2*dif-2;i++) {
-		A[i][i-dif]=keep[i+12-dif];
+	for(int i=11;i<=20;i++) {
+		A[i][i-11]=keep[i+1];
 		A[i][i]=-1;
-		if(i!=dif)A[i][i-1+dif]=drop[i+12-dif];
-		A[i][i-(dif-1)]=succ[i+12-dif];
+		if(i!=11)A[i][i-1+11]=drop[i+1];
+		A[i][i-10]=succ[i+1];
 	}
-	A[2*dif-1][2*dif-1]=1;
+	A[21][21]=1;
 
-	for(int i=2*dif;i<=3*dif-2;i++) {
-		A[i][i-(2*dif-1)]=1;
+	for(int i=22;i<=31;i++) {
+		A[i][i-21]=1;
 		A[i][i]=-1;
 	}
-	A[3*dif-1][3*dif-1]=1;
+	A[32][32]=1;
 
-	for(int i=0;i<=dif-2;i++) {
+	for(int i=0;i<=9;i++) {
 		b[i][0]=-dsty[i+12]*P[x-1][0];
-		b[i+dif][0]=-dsty[i+12]*P[x-1][0];
+		b[i+11][0]=-dsty[i+12]*P[x-1][0];
 	}
-	b[dif-1][0]=1;
-	b[2*dif-1][0]=1;
-	b[3*dif-1][0]=1;
+	b[10][0]=1;
+	b[21][0]=1;
+	b[32][0]=1;
 }
 void Solve(Matrix A ,Matrix b,Matrix X,int x) {
 	init(A,b,x);
 	// A.print();b.print();exit(0);
 	Gauss(A,b);
 	solvex(A,b,X);
-	for(int i=0;i<dif;i++)P[x][i]=X[i][0];
-	// for(int i=0;i<3*dif;i++) cout<<X[i][0]<<endl;
+	for(int i=0;i<11;i++)P[x][i]=X[i][0];
+	// for(int i=0;i<33;i++) cout<<X[i][0]<<endl;
 }
 void print(int x) {
 	for(int j=15;j<=x;j++) cout<<"\t"<<j<<"*->"<<x<<"*";cout<<endl;
@@ -127,11 +127,10 @@ void print(int x) {
 void Print() {
 	cout<<fixed<<setprecision(3);
 	cout<<endl;
-	// for(int i=22;i>=15;i--) print(i);
-	print(to);
+	for(int i=22;i>=15;i--) print(i);
 }
 int main() {
-	to=16;dif=to-12+1;
+	from=21;to=22;
 	bool successon15=0,safeguard=0;
 	if(successon15) cout<<"必成 "; else cout<<"无必成 ";
 	if(safeguard) cout<<"保护 "; else cout<<"无保护 ";
@@ -143,9 +142,10 @@ int main() {
 		keep[15]+=dsty[15]; dsty[15]=0;
 		drop[16]+=dsty[16]; dsty[16]=0;
 	}
+	int x=30;
 
-	Matrix A(3*dif,3*dif),X(3*dif,1),b(3*dif,1);
-	for(int i=1;i<=20;i++) 
+	Matrix A(33,33),X(33,1),b(33,1);
+	for(int i=1;i<=x;i++) 
 		Solve(A,b,X,i);
 	Print();
 	return 0;
