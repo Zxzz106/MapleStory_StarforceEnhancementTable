@@ -1,7 +1,7 @@
 import os
 import numpy as np
 from PIL import Image
-dir_path='./exec/'
+dir_path='./mmp/exec/'
 def splice(star):
 	res=[]
 	for path in os.scandir(dir_path):

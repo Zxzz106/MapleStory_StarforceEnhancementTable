@@ -2,8 +2,8 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.font_manager import FontProperties
-Meso=pd.read_csv('../meso/meso.csv')
-Material=pd.read_csv('../material/material.csv')
+Meso=pd.read_csv('./meso/meso.csv')
+Material=pd.read_csv('./material/material.csv')
 def match(index,Material):
 	star=index[0:2]
 	successon15=index[3]
@@ -61,13 +61,13 @@ def Draw(index,cost,z1,z2):
 	X,Y=np.meshgrid(x,y)
 	Z=np.array(height(X,Y,cost,z1,z2))
 	N=np.arange(0,1,0.001)
-	font=FontProperties(fname=r"simhei.ttf",size=14)
+	font=FontProperties(fname=r"./mmp/simhei.ttf",size=14)
 	plt.xlabel("meso",fontproperties=font)
 	plt.ylabel(u"备件",fontproperties=font)
 	plt.title(MakeTitle(index),fontproperties=font)
 	C=plt.contourf(X,Y,Z,N,cmap=plt.get_cmap('RdYlGn'))
 	cbar=plt.colorbar(C)
-	plt.savefig("./exec/"+index+".png")
+	plt.savefig("./mmp/exec/"+index+".png")
 	plt.clf()
 for (index,meso) in Meso.items():
 	(cost,material)=match(index,Material)
