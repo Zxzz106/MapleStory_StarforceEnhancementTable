@@ -17,7 +17,7 @@ void init(int level,bool discount,bool certain) {
 	for(int i=15;i<=24;i++)
 		cost[i]=100*round((pow(level,3)*pow(i+1,2.7)/20000.0+10));
 }
-double dp[6000005][11][3];
+double dp[8000005][11][3];
 double dfs(int meso,int star,int t) {	
 	if(meso<0) return 0;
 	if(dp[meso][star-12][t]!=0) return dp[meso][star-12][t];
@@ -65,7 +65,7 @@ int main() {
 	cin>>x;	x/=1000;
 	// cout<<fixed<<setprecision(1)<<x<<"b"<<"\t ";
 	x=x*1000000000/ratio;
-	assert(x<=6000000);
+	assert(x<=8000000);
 	// cout<<fixed<<setprecision(3);
 	double ans;
 	double p=0,step=x/40;
