@@ -15,4 +15,4 @@ for file in res:
 	df.columns=[file[3:13]]
 	DF=pd.concat([DF,df],axis=1)
 
-DF.to_csv('meso.csv')
+DF.to_csv('meso.csv',index=None)

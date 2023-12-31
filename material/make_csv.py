@@ -15,4 +15,4 @@ for file in res:
 	df.columns=[file[3:6]]
 	DF=pd.concat([DF,df],axis=1)
 
-DF.to_csv('material.csv')
+DF.to_csv('material.csv',index=None)
