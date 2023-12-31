@@ -1,8 +1,8 @@
 #!/bin/bash
 
-From=$1
-To=$2
-num=$3
+From=12
+To=$1
+num=$2
 
 levels="140 150 160 200"
 

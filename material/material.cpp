@@ -6,7 +6,7 @@ double succ[30]={0.95,0.90,0.85,0.85,0.80,0.75,0.70,0.65,0.60,0.55,0.50,0.45,0.4
 	   drop[30]={0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.000,0.679,0.679,0.672,0.672,0.0,0.63,0.776,0.686,0.594},
 	   dsty[30]={0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.021,0.021,0.021,0.028,0.028,0.07,0.07,0.194,0.294,0.396};
 double P[80][30];
-
+int Material;
 class Matrix {
 public:
 	int n,m;
@@ -32,10 +32,8 @@ public:
 	void print(){
 		cout<<"An "<<n<<"x"<<m<<" matrix:"<<endl;
 		for(auto i:mat) {
-			// cout<<"|";
 			for(auto j:i)
 				cout<<j<<"\t";
-			// cout<<"|"<<endl;
 			cout<<endl;
 		}
 	}
@@ -58,9 +56,6 @@ void Gauss(Matrix& A,Matrix& b) {
 			}
 			b[j][0]=b[j][0]-b[i][0]*mk;
 		}
-		// cout<<"i="<<i<<endl;
-		// A.print();
-		// b.print();
 	}
 }
 
@@ -72,12 +67,8 @@ void solvex(Matrix& A ,Matrix& b,Matrix& x) {
 		}
 		x[i][0]=b[i][0]/A[i][i];
 	}
-	// for(int i=0;i<n;i++) 
-	// 	cout<<x[i][0]<<" ";
-	// cout<<endl;
 }
 void init(Matrix& A,Matrix& b,int x) {
-	// A.clear();b.clear();
 	for(int i=0;i<=dif-2;i++) {
 		A[i][i]=keep[i+12]-1;
 		if(i!=0)A[i][i-1+dif]=drop[i+12];
@@ -109,37 +100,26 @@ void init(Matrix& A,Matrix& b,int x) {
 }
 void Solve(Matrix A ,Matrix b,Matrix X,int x) {
 	init(A,b,x);
-	// A.print();b.print();exit(0);
 	Gauss(A,b);
 	solvex(A,b,X);
 	for(int i=0;i<dif;i++)P[x][i]=X[i][0];
-	// for(int i=0;i<3*dif;i++) cout<<X[i][0]<<endl;
 }
 void print(int x) {
-	// for(int j=15;j<=x;j++) cout<<"\t"<<j<<"*->"<<x<<"*";cout<<endl;
 	P[0][x-12]=1;
-	for(int i=0;i<=20;i++) {
-		// cout<<i<<"\t";
+	for(int i=0;i<=Material;i++) {
 		cout<<P[i][3]/P[i][x-12];
 		cout<<endl;
 	}
 }
 void Print() {
-	// cout<<fixed<<setprecision(3);
-	// cout<<endl;
-	// for(int i=22;i>=15;i--) print(i);
 	print(to);
 }
 int main() {
 	
 	int type;
-	cin>>to>>type;
+	cin>>to>>type>>Material;
 	dif=to-12+1;
 	bool successon15=(type==1),safeguard=(type==2);
-	// if(successon15) cout<<"必成 "; else cout<<"无必成 ";
-	// if(safeguard) cout<<"保护 "; else cout<<"无保护 ";
-	// cout<<to<<type<<endl;
-	// cout<<endl;
 	if(successon15) {
 		succ[15]=1;keep[15]=0;drop[15]=0;dsty[15]=0;
 	}
@@ -149,7 +129,7 @@ int main() {
 	}
 
 	Matrix A(3*dif,3*dif),X(3*dif,1),b(3*dif,1);
-	for(int i=1;i<=20;i++) 
+	for(int i=1;i<=Material;i++) 
 		Solve(A,b,X,i);
 	Print();
 	return 0;

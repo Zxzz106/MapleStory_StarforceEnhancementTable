@@ -1,13 +1,11 @@
 #!/bin/bash
 
-g++ material.cpp -o material.exe
+star=$1
+Material=$2
 
 for iter in {0..2}
 do
-	for star in {16..22}
-	do
-		OutFile="./exec/out$star$iter.txt"
-		echo $OutFile
-		bash ./calc.sh $star $iter $OutFile
-	done
+	OutFile="./exec/out$star$iter.txt"
+	echo $OutFile
+	bash ./calc.sh $star $iter $Material $OutFile
 done
