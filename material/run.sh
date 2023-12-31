@@ -5,7 +5,7 @@ Material=$2
 
 for iter in {0..2}
 do
-	OutFile="./exec/out$star$iter.txt"
+	OutFile="./meso/exec/out$star$iter.txt"
 	echo $OutFile
-	bash ./calc.sh $star $iter $Material $OutFile
+	bash ./material/calc.sh $star $iter $Material $OutFile
 done

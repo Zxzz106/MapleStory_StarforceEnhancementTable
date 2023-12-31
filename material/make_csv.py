@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 
-dir_path='./exec/'
+dir_path='./material/exec/'
 
 res=[]
 for path in os.scandir(dir_path):

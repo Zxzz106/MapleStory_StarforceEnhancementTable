@@ -5,4 +5,4 @@ OutFile=$4
 
 echo $star $type $Material > in.txt
 
-./material.exe < in.txt > $OutFile
+./material/material.exe < in.txt > $OutFile
